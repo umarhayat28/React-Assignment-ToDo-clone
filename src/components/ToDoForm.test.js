@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ToDoForm from '../ToDoForm';
+import ToDoForm from '../components/ToDoForm';
 
 describe('ToDoForm', () => {
   test('renders ToDoForm component', () => {
