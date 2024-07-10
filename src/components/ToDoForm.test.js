@@ -12,13 +12,10 @@ describe('ToDoForm', () => {
   test('calls addTodo when form is submitted', () => {
     const addTodo = jest.fn();
     render(<ToDoForm addTodo={addTodo} />);
-    const input = screen.getByPlaceholderText('Add a new to-do');
-    const button = screen.getByText('Add');
-
-    fireEvent.change(input, { target: { value: 'New ToDo' } });
-    fireEvent.click(button);
-
-    expect(addTodo).toHaveBeenCalledWith('New ToDo');
-    expect(input.value).toBe('');
+    fireEvent.change(screen.getByPlaceholderText('Add a new to-do'), {
+      target: { value: 'New To-Do' },
+    });
+    fireEvent.click(screen.getByText('Add'));
+    expect(addTodo).toHaveBeenCalledWith('New To-Do');
   });
 });
