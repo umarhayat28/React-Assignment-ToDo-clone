@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ToDoList from '../ToDoList';
+import ToDoList from '../components/ToDoList';
 
 const todos = [
   { text: 'Test ToDo 1', completed: false },
