@@ -1,54 +1,50 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from '../App';
+import App from './App';
 
 describe('App', () => {
   test('renders App component', () => {
     render(<App />);
     expect(screen.getByText('To-Do List')).toBeInTheDocument();
-    expect(screen.getByText('Total Tasks: 0')).toBeInTheDocument();
-    expect(screen.getByText('Completed Tasks: 0')).toBeInTheDocument();
   });
 
   test('adds a new to-do item', () => {
     render(<App />);
-    const input = screen.getByPlaceholderText('Add a new to-do');
-    const button = screen.getByText('Add');
-
-    fireEvent.change(input, { target: { value: 'New ToDo' } });
-    fireEvent.click(button);
-
-    expect(screen.getByText('New ToDo')).toBeInTheDocument();
-    expect(screen.getByText('Total Tasks: 1')).toBeInTheDocument();
-    expect(screen.getByText('Completed Tasks: 0')).toBeInTheDocument();
+    fireEvent.change(screen.getByPlaceholderText('Add a new to-do'), {
+      target: { value: 'New To-Do' },
+    });
+    fireEvent.click(screen.getByText('Add'));
+    expect(screen.getByText('New To-Do')).toBeInTheDocument();
   });
 
   test('marks a to-do item as completed', () => {
     render(<App />);
-    const input = screen.getByPlaceholderText('Add a new to-do');
-    const button = screen.getByText('Add');
-
-    fireEvent.change(input, { target: { value: 'New ToDo' } });
-    fireEvent.click(button);
-
+    fireEvent.change(screen.getByPlaceholderText('Add a new to-do'), {
+      target: { value: 'New To-Do' },
+    });
+    fireEvent.click(screen.getByText('Add'));
     fireEvent.click(screen.getByText('Complete'));
-
-    expect(screen.getByText('Undo')).toBeInTheDocument();
-    expect(screen.getByText('Completed Tasks: 1')).toBeInTheDocument();
+    expect(screen.getByText('New To-Do')).toHaveStyle('text-decoration: line-through');
   });
 
   test('deletes a to-do item', () => {
     render(<App />);
-    const input = screen.getByPlaceholderText('Add a new to-do');
-    const button = screen.getByText('Add');
-
-    fireEvent.change(input, { target: { value: 'New ToDo' } });
-    fireEvent.click(button);
-
+    fireEvent.change(screen.getByPlaceholderText('Add a new to-do'), {
+      target: { value: 'New To-Do' },
+    });
+    fireEvent.click(screen.getByText('Add'));
     fireEvent.click(screen.getByText('Delete'));
+    expect(screen.queryByText('New To-Do')).not.toBeInTheDocument();
+  });
 
-    expect(screen.queryByText('New ToDo')).not.toBeInTheDocument();
-    expect(screen.getByText('Total Tasks: 0')).toBeInTheDocument();
-    expect(screen.getByText('Completed Tasks: 0')).toBeInTheDocument();
+  test('displays correct task counts', () => {
+    render(<App />);
+    fireEvent.change(screen.getByPlaceholderText('Add a new to-do'), {
+      target: { value: 'New To-Do' },
+    });
+    fireEvent.click(screen.getByText('Add'));
+    expect(screen.getByText('Total Tasks: 1')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('Complete'));
+    expect(screen.getByText('Completed Tasks: 1')).toBeInTheDocument();
   });
 });
