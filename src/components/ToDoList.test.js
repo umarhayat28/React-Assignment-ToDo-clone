@@ -4,7 +4,7 @@ import ToDoList from '../ToDoList';
 
 const todos = [
   { text: 'Test ToDo 1', completed: false },
-  { text: 'Test ToDo 2', completed: true },
+  { text: 'Test ToDo 2', completed: false },
 ];
 
 describe('ToDoList', () => {
