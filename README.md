@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# To-Do List Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple To-Do List application built using React. The application allows users to add, mark as complete, and delete to-do items. It also keeps track of the total and completed tasks.
 
-## Available Scripts
+## Application Structure
 
-In the project directory, you can run:
+The project has the following structure:
 
-### `npm start`
+project-root/
+│
+├── public/
+│ ├── index.html
+│ └── ...
+│
+├── src/
+│ ├── App.js
+│ ├── App.css
+│ ├── App.test.js
+│ ├── components/
+│ │ ├── ToDoForm.js
+│ │ ├── ToDoForm.test.js
+│ │ ├── ToDoItem.js
+│ │ ├── ToDoItem.test.js
+│ │ ├── ToDoList.js
+│ │ └── ToDoList.test.js
+│ └── index.js
+│
+├── package.json
+└── README.md
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Components
 
-### `npm test`
+- **App.js**: The main component that manages the state and renders the `ToDoForm` and `ToDoList` components.
+- **ToDoForm.js**: A form component that allows users to add new to-do items.
+- **ToDoItem.js**: A component that renders an individual to-do item with options to mark it as complete or delete it.
+- **ToDoList.js**: A component that renders a list of `ToDoItem` components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Tests
 
-### `npm run build`
+- **App.test.js**: Tests for the `App` component to ensure correct rendering and functionality.
+- **ToDoForm.test.js**: Tests for the `ToDoForm` component to ensure correct rendering and functionality.
+- **ToDoItem.test.js**: Tests for the `ToDoItem` component to ensure correct rendering and functionality.
+- **ToDoList.test.js**: Tests for the `ToDoList` component to ensure correct rendering and functionality.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How to Run the Application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js (v14 or higher recommended)
+- npm (v6 or higher) or yarn (v1.22 or higher)
 
-### `npm run eject`
+### Steps
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/chessmanpk/React-Assignment-ToDo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Install the dependencies:
+npm install
 
-## Learn More
+Run the application:
+npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This will start the development server and open the application in your default web browser. The application should be running on http://localhost:3000.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To run the tests, use the following command:
+npm test
 
-### Code Splitting
+This will run all the test files using Jest and React Testing Library.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Challenges Faced and Solutions
 
-### Making a Progressive Web App
+1. Handling Component State
+Managing the state of multiple components and ensuring they update correctly in response to user actions was a bit challenging. This was resolved by using React's state hooks (useState) and effect hooks (useEffect) to manage and synchronize state between components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Local Storage Integration
+Persisting the to-do list in the browser's local storage required careful handling to ensure data consistency. The solution was to use useEffect to save the to-do list to local storage whenever it changed, and to initialize the state from local storage when the application loads.
 
-### Advanced Configuration
+3. Writing Tests
+Writing tests for the components to cover various scenarios was a learning curve, especially for simulating user interactions with fireEvent. By leveraging Jest and React Testing Library, comprehensive tests were written to ensure the components render correctly and handle user actions as expected.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
