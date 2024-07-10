@@ -12,14 +12,14 @@ describe('ToDoItem', () => {
     expect(screen.getByText('Delete')).toBeInTheDocument();
   });
 
-  test('calls toggleTodo when the complete button is clicked', () => {
+  test('calls toggleTodo when Complete/Undo button is clicked', () => {
     const toggleTodo = jest.fn();
     render(<ToDoItem todo={todo} index={0} toggleTodo={toggleTodo} deleteTodo={jest.fn()} />);
     fireEvent.click(screen.getByText('Complete'));
     expect(toggleTodo).toHaveBeenCalledWith(0);
   });
 
-  test('calls deleteTodo when the delete button is clicked', () => {
+  test('calls deleteTodo when Delete button is clicked', () => {
     const deleteTodo = jest.fn();
     render(<ToDoItem todo={todo} index={0} toggleTodo={jest.fn()} deleteTodo={deleteTodo} />);
     fireEvent.click(screen.getByText('Delete'));
