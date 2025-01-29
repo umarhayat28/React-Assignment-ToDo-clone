@@ -7,7 +7,23 @@
 
 
 
+
+
+
+
+
+
+
+
 This is a simple To-Do List application built using React. The application allows users to add, mark as complete, and delete to-do items. It also keeps track of the total and completed tasks.
+
+
+
+
+
+
+
+
 
 
 
@@ -25,7 +41,23 @@ This is a simple To-Do List application built using React. The application allow
 
 
 
+
+
+
+
+
+
+
+
 The project has the following structure:
+
+
+
+
+
+
+
+
 
 
 
@@ -42,12 +74,4 @@ project-root/
 │
 ├── src/
 │ ├── App.js
-│ ├── App.css
-│ ├── App.test.js
-│ ├── components/
-│ │ ├── ToDoForm.js
-│ │ ├── ToDoForm.test.js
-│ │ ├── ToDoItem.js
-│ │ ├── ToDoItem.test.js
-│ │ ├── ToDoList.js
-Activity added: 2025-01-30 00:18:13
+Activity added: 2025-01-30 00:19:48
