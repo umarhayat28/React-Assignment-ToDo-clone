@@ -54,7 +54,6 @@ project-root/
 
 1. Clone the repository:
 
-```bash
 git clone https://github.com/chessmanpk/React-Assignment-ToDo
 
 
